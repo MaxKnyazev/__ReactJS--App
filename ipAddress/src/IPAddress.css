@@ -1,0 +1,9 @@
+div {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 7vw;
+  margin: 1vh;
+}
+  .colorInfo {
+    color : rgb(146, 0, 108);;
+  }
