@@ -24,6 +24,7 @@ class App extends Component {
     return {
       label,
       important : false, 
+      special : false,
       done : false,
       id : Math.floor(Date.now() * Math.random())
     }
@@ -31,13 +32,7 @@ class App extends Component {
 
   deleteItem = (id) => {
     this.setState(({todoData}) => {
-      // const idx = todoData.findIndex((el) => el.id === id);
-
-      // const newTodoData = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)]
       const newTodoData = todoData.filter((elem) => elem.id !== id);
-      // console.log(newTodoData);
-      // console.log(idx);
-
       return {
         todoData: newTodoData,
       }
@@ -70,6 +65,14 @@ class App extends Component {
     this.setState(({ todoData }) => {
       return {
         todoData : this.toggleProperty(todoData, id, 'important') 
+      }
+    })
+  }
+
+  onToggleSpecial = (id) => {
+    this.setState(({ todoData }) => {
+      return {
+        todoData : this.toggleProperty(todoData, id, 'special') 
       }
     })
   }
@@ -127,6 +130,7 @@ class App extends Component {
           todos = {visibleItems} 
           onDeleted = {this.deleteItem}
           onToggleImportant = {this.onToggleImportant}
+          onToggleSpecial = {this.onToggleSpecial}
           onToggleDone = {this.onToggleDone}
         />
 
